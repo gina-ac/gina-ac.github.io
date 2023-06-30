@@ -76,7 +76,7 @@ span {
 img {
     /* border: 2px solid black; */
     max-width: 75%;
-    max-height: 100%;
+    max-height: 80%;
     position: absolute;
     top: 20%;
     right: 0%;
@@ -93,6 +93,12 @@ img {
     margin: 0px;
 }
 
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+}
+
 @media screen and (max-width: 700px) {
     main {
         width: 100%;
@@ -106,4 +112,8 @@ img {
     img {
         top: 55%;
         }
+
+    footer {
+        bottom: -100px;
+    }
 }
