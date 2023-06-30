@@ -33,7 +33,6 @@ function randomLetterIndex(word) {
     return index;
 }
 
-
 function showRandomLetter(lettersArray, letterIndex) {
     let letterBinId = `#letterBin${letterIndex}`;
     let letterBin = document.querySelector(letterBinId);
@@ -79,66 +78,47 @@ function clearLetterBins(word) {
 function checkGuess(word) {
     let guess = document.querySelector("#guess").value;
     let wordBin = document.querySelector("#word");
+    let skip = document.querySelector("#skip");
+    let message = document.querySelector("#message");
+    let bird = document.querySelector("#bird");
     if (guess == word) {
         clearLetterBins(word);
         wordBin.innerText = word;
         wordBin.style.backgroundColor = "white"
-        document.querySelector("#skip").innerText = "Next Word";
-        document.querySelector("#message").innerText = ("Correct!");
-        document.querySelector("#bird").src = "./bird_open.png";
-
+        skip.innerText = "Next Word";
+        message.innerText = "Correct!";
+        bird.src = "./bird_open.png";
     } else {
-        document.querySelector("#message").innerText = ("Try again.");
+        message.innerText = "Try again.";
     }
 }
-
-// function binEmpty(letterIndex) {
-//     let letterBinId = `#letterBin${letterIndex}`;
-//     if (document.querySelector(letterBinId).innertext == "_") {
-//         let result = true;
-//         console.log(result);
-//         return result;
-//     } else {
-//         let result = false;
-//         console.log(result);
-//         return result;
-//     }
-// }
-
-// function giveHint(word, lettersArray) {
-//     let letterIndex = randomLetterIndex(word);
-//     let binAvailable = binEmpty(letterIndex);    
-//     while (binAvailable == false) {
-//         if (binAvailable == true) {
-//             break;
-//         }
-//         letterIndex = randomLetterIndex(word);
-//         binAvailable = binEmpty(letterIndex);
-//     }
-//     showRandomLetter(lettersArray,letterIndex);
-//     document.querySelector("#message").innerText = ("");
-// }
 
 function giveHint(word, lettersArray) {
     let letterIndex = randomLetterIndex(word);
     showRandomLetter(lettersArray,letterIndex);
-    document.querySelector("#message").innerText = ("");
+    let message = document.querySelector("#message");
+    message.innerText = "";
 }
 
 function skipWord(word, wordList) {
-    if (document.querySelector("#word").innerText == word) {
-        document.querySelector("#word").innerText = "";
-        document.querySelector("#word").style.backgroundColor = "";
-        document.querySelector("#skip").innerText = "Skip";
-        document.querySelector("#bird").src = "./bird_closed.png";
+    let wordBin = document.querySelector("#word");
+    let skip = document.querySelector("#skip");
+    let bird = document.querySelector("#bird");
+    if (wordBin.innerText == word) {
+        wordBin.innerText = "";
+        wordBin.style.backgroundColor = "";
+        skip.innerText = "Skip";
+        bird.src = "./bird_closed.png";
     } else {
         clearLetterBins(word);
-        document.querySelector("#word").innerText = ""
+        wordBin.innerText = ""
     }
 
-    document.querySelector("#message").innerText = ("");
+    let message = document.querySelector("#message");
+    message.innerText = ("");
 
-    document.querySelector("#guess").value = "";
+    let guess = document.querySelector("#guess");
+    guess.value = "";
 
     wordArray1 = wordList;
     wordIndex1 = randomWordIndex(wordArray1);
