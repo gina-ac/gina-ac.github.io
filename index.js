@@ -85,6 +85,8 @@ function checkGuess(word) {
         wordBin.style.backgroundColor = "white"
         document.querySelector("#skip").innerText = "Next Word";
         document.querySelector("#message").innerText = ("Correct!");
+        document.querySelector("#bird").src = "./bird_open.png";
+
     } else {
         document.querySelector("#message").innerText = ("Try again.");
     }
@@ -128,6 +130,7 @@ function skipWord(word, wordList) {
         document.querySelector("#word").innerText = "";
         document.querySelector("#word").style.backgroundColor = "";
         document.querySelector("#skip").innerText = "Skip";
+        document.querySelector("#bird").src = "./bird_closed.png";
     } else {
         clearLetterBins(word);
         document.querySelector("#word").innerText = ""
