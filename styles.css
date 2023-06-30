@@ -96,7 +96,7 @@ img {
 footer {
     width: 100%;
     position: absolute;
-    bottom: 0px;
+    bottom: -60px;
 }
 
 @media screen and (max-width: 700px) {
