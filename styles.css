@@ -117,3 +117,27 @@ footer {
         bottom: -100px;
     }
 }
+
+@media screen and (max-width: 500px) {
+    main {
+        width: 100%;
+    }
+
+    span {
+       font-size: 20px;
+       margin: 5px;
+    }
+
+    img {
+        top: 65%;
+        }
+
+    #div2 {
+        display: flex;
+        justify-content: center;
+    }
+
+    footer {
+        bottom: -100px;
+    }
+}
