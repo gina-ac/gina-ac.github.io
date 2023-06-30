@@ -135,6 +135,7 @@ footer {
     #div2 {
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
     }
 
     footer {
