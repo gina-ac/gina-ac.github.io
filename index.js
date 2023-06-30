@@ -81,7 +81,7 @@ function checkGuess(word) {
     let skip = document.querySelector("#skip");
     let message = document.querySelector("#message");
     let bird = document.querySelector("#bird");
-    if (guess == word) {
+    if (guess.toLowerCase() == word) {
         clearLetterBins(word);
         wordBin.innerText = word;
         wordBin.style.backgroundColor = "white"
