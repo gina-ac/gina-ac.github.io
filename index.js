@@ -28,15 +28,33 @@ function createLettersArray(word) {
     return lettersArray;
 }
 
-function randomLetterIndex(word) {
-    let index = Math.floor(Math.random() * word.length);
-    return index;
+function indexLettersArray(lettersArray) {
+    let indexLettersArray10 = [];
+    for (let i = 0; i < lettersArray.length; i++) {
+        indexLettersArray10.push([lettersArray[i], i]);
+    }
+    console.log(indexLettersArray10);
+    return indexLettersArray10;
 }
 
-function showRandomLetter(lettersArray, letterIndex) {
-    let letterBinId = `#letterBin${letterIndex}`;
+function shuffleIndexLettersArray(indexLettersArray2) {
+    for (let i = indexLettersArray2.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = indexLettersArray2[i];
+        indexLettersArray2[i] = indexLettersArray2[j];
+        indexLettersArray2[j] = temp;
+    }
+    return indexLettersArray2;
+}
+
+function showRandomLetter(indexLettersArray2) {
+    console.log(indexLettersArray2[0][1]);
+    let letterBinId = `#letterBin${indexLettersArray2[0][1]}`;
+    console.log(letterBinId);
     let letterBin = document.querySelector(letterBinId);
-    let letter = letterBin.innerText = lettersArray[letterIndex];
+    console.log(indexLettersArray2[0][0]);
+    let letter = letterBin.innerText = indexLettersArray2[0][0];
+    indexLettersArray2.shift();
     return letter;
 }
 
@@ -93,9 +111,9 @@ function checkGuess(word) {
     }
 }
 
-function giveHint(word, lettersArray) {
-    let letterIndex = randomLetterIndex(word);
-    showRandomLetter(lettersArray,letterIndex);
+function giveHint(indexLettersArray2) {
+    console.log(indexLettersArray2);
+    showRandomLetter(indexLettersArray2);
     let message = document.querySelector("#message");
     message.innerText = "";
 }
@@ -124,37 +142,39 @@ function skipWord(word, wordList) {
     wordIndex1 = randomWordIndex(wordArray1);
     word1 = getWord(wordArray1, wordIndex1);
     lettersArray1 = createLettersArray(word1);
-    letterIndex1 = randomLetterIndex(word1);
+    indexLettersArray1 = indexLettersArray(lettersArray1);
+    shuffleIndexLettersArray1 = shuffleIndexLettersArray(indexLettersArray1);
     category1 = getCategory(wordArray1, wordIndex1);
 
     showCategory(category1);
     createWordBin(word1);
     addPlaceholders(word1);
 
-    randomLetter1 = showRandomLetter(lettersArray1, letterIndex1);
+    showRandomLetter1 = showRandomLetter(shuffleIndexLettersArray1);
 
-    console.log(wordArray1, wordIndex1, word1, lettersArray1, letterIndex1, randomLetter1, category1);
+    console.log(wordArray1, wordIndex1, word1, lettersArray1, category1);
 }
 
 wordArray1 = wordList;
 let wordIndex1 = randomWordIndex(wordArray1);
 let word1 = getWord(wordArray1, wordIndex1);
 let lettersArray1 = createLettersArray(word1);
-let letterIndex1 = randomLetterIndex(word1);
+let indexLettersArray1 = indexLettersArray(lettersArray1);
+let shuffleIndexLettersArray1 = shuffleIndexLettersArray(indexLettersArray1);
 let category1 = getCategory(wordArray1, wordIndex1);
 
 showCategory(category1);
 createWordBin(word1);
 addPlaceholders(word1);
 
-let randomLetter1 = showRandomLetter(lettersArray1, letterIndex1);
+let showRandomLetter1 = showRandomLetter(shuffleIndexLettersArray1);
 
-console.log(wordArray1, wordIndex1, word1, lettersArray1, letterIndex1, randomLetter1, category1);
+console.log(wordArray1, wordIndex1, word1, lettersArray1, category1);
 
 let submitButton = document.querySelector("#submit");
 let hintButton = document.querySelector("#hint");
 let skipButton = document.querySelector("#skip");
 
 submitButton.onclick = function() {checkGuess(word1)};
-hintButton.onclick = function() {giveHint(word1, lettersArray1)};
+hintButton.onclick = function() {giveHint(shuffleIndexLettersArray1)};
 skipButton.onclick = function() {skipWord(word1, wordArray1)};
