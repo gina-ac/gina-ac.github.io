@@ -4,12 +4,12 @@ const wordArray = [
     {word: "apple", category: "fruit"}, 
     {word: "banana", category: "fruit"}, 
     {word: "orange", category: "fruit"},
-    {word: "gum", category: "candy"}, 
-    {word: "chocolate", category: "candy"}, 
-    {word: "lollipop", category: "candy"},
+    {word: "fudge", category: "candy"}, 
+    {word: "mints", category: "candy"}, 
+    {word: "caramel", category: "candy"},
     {word: "dog", category: "animal"},
     {word: "cat", category: "animal"},
-    {word: "fish", category: "animal"}];
+    {word: "bird", category: "animal"}];
 
     
 // Functions
